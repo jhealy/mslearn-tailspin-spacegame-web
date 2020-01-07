@@ -1,17 +1,17 @@
 trigger:
   - '*'
   
-  pool:
-    vmImage: 'ubuntu-16.04'
-    demands:
-      - npm
+pool:
+  vmImage: 'ubuntu-16.04'
+  demands:
+    - npm
   
-  variables:
-    buildConfiguration: 'Release'
-    wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
-    dotnetSdkVersion: '2.1.505'
+variables:
+  buildConfiguration: 'Release'
+  wwwrootDir: 'Tailspin.SpaceGame.Web/wwwroot'
+  dotnetSdkVersion: '2.1.505'
   
-  steps:
+steps:
   - task: DotNetCoreInstaller@0
     displayName: 'Use .NET Core SDK $(dotnetSdkVersion)'
     inputs:
@@ -49,4 +49,3 @@ trigger:
   - task: PublishBuildArtifacts@1
     displayName: 'Publish Artifact: drop'
     condition: succeeded()
-    
